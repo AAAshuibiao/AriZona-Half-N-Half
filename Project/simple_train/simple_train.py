@@ -117,13 +117,13 @@ if __name__ == "__main__":
     
     train_image_vector = np.reshape(train_image, (60000, 784))
     
-    simple_train = simple_train_one_num(train_image_vector[0:5000], train_label[0:5000], 10, 0.1, 2.55)
+    simple_train = simple_train_one_num(train_image_vector[0:50000], train_label[0:50000], 10, 0.1, 2.55)
     
     simple_train.train_learn()
     
     #构造测试集
-    test_image_vector = train_image_vector[5000:5100]
-    test_ans = train_label[5000:5100]
+    test_image_vector = train_image_vector[50000:50100]
+    test_ans = train_label[50000:50100]
     #计算预测
     pre_ans = simple_train.predict(test_image_vector)
     
