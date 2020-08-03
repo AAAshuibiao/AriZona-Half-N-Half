@@ -1,0 +1,5 @@
+{
+    "Use-costom-trainer": false,
+    "Training-data-set-portion": "0-10000",
+    "tolerance": 10
+}
