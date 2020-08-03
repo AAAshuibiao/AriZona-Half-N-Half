@@ -12,7 +12,7 @@ cfg = json.loads(
 )
 
 
-if cfg["Use-costom-trainer"]:
+if cfg["Use-custom-trainer"]:
     Trainer = custom_train.My_train
 else:
     Trainer = modules.simple_train.simple_train_one_num
