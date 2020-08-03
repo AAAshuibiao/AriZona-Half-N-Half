@@ -1,25 +1,23 @@
 import os
 import sys
 
-
-path = ".."
+import loader
 
 
 def askForCorrectPath():
-    global path
     print( "please input the correct path for Project folder(\"官方营算法\" folder):" )
-    path = input()
+    loader.path = input()
 
 
 try:
     assert os.getcwd().split('\\')[-1] == "my_code"
-    sys.path.append(path)
-    sys.path.append(path + "\\auto_grader")
+    sys.path.append(loader.path)
+    sys.path.append(loader.path + "\\auto_grader")
 
 except AssertionError:
     print( "cwd not under \"my_code\", as cwd = " + os.getcwd() )
     askForCorrectPath()
-    sys.path.append(path)
+    sys.path.append(loader.path)
 
 
 from auto_grader import auto_grader

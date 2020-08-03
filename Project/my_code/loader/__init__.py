@@ -1,3 +1,5 @@
+path = ".."
+
 from . import modules
 from . import pictures
 
