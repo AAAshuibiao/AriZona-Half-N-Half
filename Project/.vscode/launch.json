@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch program",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\my_code\\main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\my_code"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
