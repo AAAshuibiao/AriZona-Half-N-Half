@@ -1,10 +1,14 @@
-import loader
+import numpy as np
 
+import loader
 import processor
 
-from processor import cfg
+from processor import config as cfg
 from processor import Trainer
 
+
+def data_reshape(data):
+    return np.reshape(data, (len(data), 784))
 
 def setup():
     lower_bounds, upper_bounds = cfg["Training-data-set-portion"].split("-")
@@ -16,7 +20,7 @@ def setup():
     labels = loader.labelList[lower_bounds : upper_bounds]
 
     if not cfg["Use-custom-trainer"]:
-        data_raw = loader.imageList[lower_bounds : upper_bounds]
+        data = data_reshape( loader.imageList[lower_bounds : upper_bounds] )
 
     toler = cfg["tolerance"]
 
@@ -27,7 +31,10 @@ def setup():
 
 
 def learn():
-    processor.trainer.run()
+    try:
+        processor.trainer.run()
+    except AttributeError:
+        processor.trainer.train_learn()
 
 
 def run():

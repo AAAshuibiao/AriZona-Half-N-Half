@@ -5,12 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch program(from main)",
+            "name": "Launch program(from main.py)",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}\\my_code\\main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}\\my_code"
+        },
+        {
+            "name": "Launch training test(from simple_train.py)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\simple_train\\simple_train.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
         },
         {
             "name": "Python: Current File",

@@ -1,6 +1,7 @@
 import loader
 import loader.modules as modules
 
+
 def load_mnist():
     while True:
         try:
@@ -14,3 +15,9 @@ def load_mnist():
             modules.askForCorrectPath()
     
     return train_image, train_label
+
+
+def load_square_map():
+    raw_png_images = []
+    for i in range(64):
+        print(i)

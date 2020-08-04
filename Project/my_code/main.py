@@ -1,13 +1,17 @@
 #Runs on windows 10, Python 3.8.5
 
-import os
+from os import system as command
 
 import loader
 import processor
+import actuator
+
+from actuator.proceed import begin
 
 
 def main():
-    os.system('pause')
+    begin()
+    command('pause')
 
 
 if __name__ == '__main__':

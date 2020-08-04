@@ -109,6 +109,7 @@ class simple_train_one_num:
 
 
 if __name__ == "__main__":
+    import random
     import sys
     sys.path.append("read_picture")
     import read_picture
@@ -117,11 +118,16 @@ if __name__ == "__main__":
     
     train_image_vector = np.reshape(train_image, (60000, 784))
     
-    simple_train = simple_train_one_num(train_image_vector[0:5000], train_label[0:5000], 10, 0.1, 2.55)
-    
+    simple_train = simple_train_one_num(train_image_vector[0:10000], train_label[0:10000], 10, 0.1, 2.55)
+    simple_train2 = simple_train_one_num(train_image_vector[10000:20000], train_label[10000:20000], 10, 0.1, 2.55)
+    simple_train3 = simple_train_one_num(train_image_vector[20000:30000], train_label[20000:30000], 10, 0.1, 2.55)
 
-
+    print(".")
     simple_train.train_learn()
+    print("..")
+    simple_train2.train_learn()
+    print("...")
+    simple_train3.train_learn()
 
     #构造测试集
     test_image_vector = train_image_vector[30000:31000]
@@ -129,14 +135,26 @@ if __name__ == "__main__":
     
     #计算预测
     pre_ans = simple_train.predict(test_image_vector)
+    pre_ans2 = simple_train2.predict(test_image_vector)
+    pre_ans3 = simple_train3.predict(test_image_vector)
     
     #计算正确率
     i = 0
     true_num = 0
     while i < len(test_image_vector):
-        if test_ans[i] ==  pre_ans[i]:
+        if pre_ans[i] == pre_ans2[i] == pre_ans3[i]:
+            vote_ans = pre_ans[i]
+        elif pre_ans[i] == pre_ans2[i]:
+            vote_ans = pre_ans[i]
+        elif pre_ans2[i] == pre_ans3[i]:
+            vote_ans = pre_ans2[i]
+        elif pre_ans[i] == pre_ans3[i]:
+            vote_ans = pre_ans[i]
+        else:
+            vote_ans = random.choice([pre_ans[i], pre_ans2[i], pre_ans3[i]])
+        if test_ans[i] == vote_ans:
             true_num += 1
         i+=1
     
-    print(i)
+    print("acc:")
     print(true_num/i)
