@@ -9,8 +9,14 @@ from processor import Trainer
 def setup():
     lower_bounds, upper_bounds = cfg["Training-data-set-portion"].split("-")
 
-    data = loader.imageList[lower_bounds, upper_bounds]
-    labels = loader.labelList[lower_bounds, upper_bounds]
+    lower_bounds = int(lower_bounds)
+    upper_bounds = int(upper_bounds)
+
+    data = loader.imageList[lower_bounds : upper_bounds]
+    labels = loader.labelList[lower_bounds : upper_bounds]
+
+    if not cfg["Use-custom-trainer"]:
+        data_raw = loader.imageList[lower_bounds : upper_bounds]
 
     toler = cfg["tolerance"]
 
@@ -21,7 +27,7 @@ def setup():
 
 
 def learn():
-    processor.trainer.train_learn()
+    processor.trainer.run()
 
 
 def run():

@@ -4,7 +4,6 @@ import loader
 import loader.modules as modules
 
 from . import custom_train
-from . import train
 
 
 cfg = json.loads(
@@ -19,6 +18,9 @@ else:
 
 
 trainer = None
+
+
+from . import train
 
 
 train.run()

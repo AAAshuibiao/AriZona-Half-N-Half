@@ -68,7 +68,7 @@ class simple_train_one_num:
                 j+=1
                 num+=1
             i+=1
-        
+
     def predict(self, test_data):
         ans = []
         num_len = len(self.num_kind)

@@ -4,6 +4,7 @@ import sys
 import loader
 
 
+
 def askForCorrectPath():
     print( "please input the correct path for Project folder(\"官方营算法\" folder):" )
     loader.path = input()
