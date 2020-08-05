@@ -12,7 +12,6 @@ class Image(object):
         self.greyscale = None
         self.load_file().load_rgb().load_greyscale().get_color()
         self.color = None
-        self.number = None
 
     def load_file(self):
         image_path = loader.path + "\\auto_grader\\images\\" + str(self.ID) + ".png"
@@ -31,8 +30,11 @@ class Image(object):
 
 def load_square_map():
     smap = actuator.smap
-    for i in range( smap.size[0] * smap.size[1] ):
-        print(i)
+    count = 0
+    for (x, y) in smap.list:
+        if not smap.map[(x, y)].is_edge:
+            smap.map[(x, y)].image = Image(count)
+            count += 1
 
 
 def load_mnist():
