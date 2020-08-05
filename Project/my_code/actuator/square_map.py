@@ -1,3 +1,4 @@
+from loader import pictures
 from actuator.square import Square
 
 

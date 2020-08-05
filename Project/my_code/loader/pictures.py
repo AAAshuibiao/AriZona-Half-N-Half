@@ -1,7 +1,7 @@
 import loader
 import loader.modules as modules
 
-import actuator
+from actuator.square_map import edgeless, traverse
 
 
 class Image(object):
@@ -14,27 +14,35 @@ class Image(object):
         self.color = None
 
     def load_file(self):
-        image_path = loader.path + "\\auto_grader\\images\\" + str(self.ID) + ".png"
+        image_path = loader.path + "\\auto_grader\\image\\" + str(self.ID) + ".png"
         self.file = modules.Image.open(image_path)
         return self
 
     def load_rgb(self):
         self.rgb = self.file.convert("RGB").load()
+        return self
 
     def load_greyscale(self):
         self.greyscale = self.file.convert("L").load()
+        return self
 
     def get_color(self):
         self.color = "R"
+        return self
+
+    @classmethod
+    def ID_counter(self):
+        try:
+            self.count += 1
+        except AttributeError:
+            self.count = 0
+        return self.count
 
 
-def load_square_map():
-    smap = actuator.smap
-    count = 0
-    for (x, y) in smap.list:
-        if not smap.map[(x, y)].is_edge:
-            smap.map[(x, y)].image = Image(count)
-            count += 1
+@edgeless
+@traverse
+def load_square_map_images(self, x = None, y = None):
+    self.map[(x, y)].image = Image( Image.ID_counter() )
 
 
 def load_mnist():
