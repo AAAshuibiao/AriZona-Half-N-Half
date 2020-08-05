@@ -48,7 +48,6 @@ class Square_map(object):
     def init_map(self, x = None, y = None):
         index = x + self.size['X'] * y
         self.map[(x, y)] = self.list[index]
-        return None
 
     @traverse
     def init_edge(self, x = None, y = None):
