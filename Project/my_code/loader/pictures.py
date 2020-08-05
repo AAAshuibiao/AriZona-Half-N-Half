@@ -4,7 +4,7 @@ import loader.modules as modules
 from actuator.square_map import edgeless, traverse
 
 
-class Image(object):
+class Image_data(object):
     def __init__(self, ID):
         self.ID = ID
         self.file = None
@@ -42,7 +42,7 @@ class Image(object):
 @edgeless
 @traverse
 def load_square_map_images(self, x = None, y = None):
-    self.map[(x, y)].image = Image( Image.ID_counter() )
+    self.map[(x, y)].image = Image_data( Image_data.ID_counter() )
 
 
 def load_mnist():
