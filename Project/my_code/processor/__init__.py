@@ -21,11 +21,11 @@ else:
 trainer = None
 
 
-print("running: training", file = stdout)
+print("processing: training", file = stdout)
 from . import train
 train.run()
 
 
-print("running: recognizing", file = stdout)
+print("processing: recognizing", file = stdout)
 from . import recognize
 recognize.run()

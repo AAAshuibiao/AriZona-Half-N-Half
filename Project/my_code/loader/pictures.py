@@ -1,6 +1,8 @@
 import loader
 import loader.modules as modules
 
+from actuator.square_map import Square_map
+
 
 def load_mnist():
     while True:
@@ -18,6 +20,6 @@ def load_mnist():
 
 
 def load_square_map():
-    raw_png_images = []
-    for i in range(64):
+    smap = Square_map()
+    for i in range( smap.size[0] * smap.size[1] ):
         print(i)
