@@ -1,16 +1,26 @@
 from actuator.square import Square
 
 
-def trimmed(func):
-    
-def traverse(func):
+def edgeless(func):
     def inner(self):
-        for y in range(self.size['Y']):
-            for x in range(self.size['X']):
+        return func(self, True)
+    return inner
+
+def traverse(func):
+    def inner(self, trim = False):
+        if not trim:
+            sizes = [ [ 0, self.size['X'] ], [ 0, self.size['Y'] ] ]
+        else:
+            sizes = [ [1, self.size['X']-1 ], [ 1, self.size['Y']-1 ] ]
+        
+        for y in range(*sizes[1]):
+            for x in range(*sizes[0]):
                 info = func(self, x, y)
-                if info:
+                if info != None:
                     print(str(info), end = ", ")
-                    if x+1 == self.size['X']: print()
+                    if x+1 == sizes[0][1]: print()
+        
+        return self
     return inner
 
 
@@ -26,7 +36,8 @@ class Square_map(object):
 
         self.init_list().init_map().init_edge()
 
-        self.debug_print_ids()
+        #self.debug_print_ids()
+        #self.debug_print_edgeless_ids()
 
     def init_list(self):
         for i in range( self.length ):
@@ -47,4 +58,9 @@ class Square_map(object):
 
     @traverse
     def debug_print_ids(self, x = None, y = None):
+        return self.map[(x, y)].ID
+
+    @edgeless
+    @traverse
+    def debug_print_edgeless_ids(self, x = None, y = None):
         return self.map[(x, y)].ID
