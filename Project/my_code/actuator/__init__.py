@@ -1,3 +1,5 @@
-from . import square_map
+from . import quare_map
 
-mp = []
+from square_map import Square_map
+
+smap = Square_map()

@@ -1,8 +1,9 @@
 import os
 import sys
 
-import loader
+from PIL import Image
 
+import loader
 
 
 def askForCorrectPath():
