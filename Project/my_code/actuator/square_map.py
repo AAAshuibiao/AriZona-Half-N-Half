@@ -35,7 +35,11 @@ class Square_map(object):
         self.list = []
         self.map = {}
 
+        self.image_vectors = []
+
         self.init_list().init_map().init_edge()
+
+        self.simple_predictions = []
 
         #self.debug_print_ids()
         #self.debug_print_edgeless_ids()
@@ -56,11 +60,23 @@ class Square_map(object):
         elif not y == 0 and not y+1 == self.size['Y']: pass
         else: self.map[(x, y)].is_edge = False
 
+    @edgeless
     @traverse
-    def debug_print_ids(self, x = None, y = None):
+    def load_image_vectors(self, x = None, y = None):
+        self.image_vectors.append(
+            self.map[(x, y)].image_data.greyscale
+        )
+
+    @edgeless
+    @traverse
+    def print_color(self, x = None, y = None):
+        return self.map[(x, y)].color
+
+    @traverse
+    def _debug_print_ids(self, x = None, y = None):
         return self.map[(x, y)].ID
 
     @edgeless
     @traverse
-    def debug_print_edgeless_ids(self, x = None, y = None):
+    def _debug_print_edgeless_ids(self, x = None, y = None):
         return self.map[(x, y)].ID
