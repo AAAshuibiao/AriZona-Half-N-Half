@@ -13,6 +13,7 @@ import read_picture  #line:11
 
 class auto_grader:  #line:14
     def __init__(O0O0O000O0O0O00OO, enable_ui=True):  #line:15
+        O0O0O000O0O0O00OO.image_list = []
         if enable_ui:  #line:16
             _thread.start_new_thread(O0O0O000O0O0O00OO.ui, tuple())  #line:17
             time.sleep(1)  #line:18
@@ -65,6 +66,7 @@ class auto_grader:  #line:14
             OOO00O0OO0O000OOO.append([OO00OOOOOO0000O0O,
                                       O00O0O0OOO0OOO000])  #line:58
         print('图片显示完毕')  #line:59
+        O0O0OO0OOOO0OO0OO.image_list = OOO00O0OO0O000OOO
         return OOO00O0OO0O000OOO  #line:60
 
     def index(O000O00OOO0O0O0O0, O0O000OO0O000O00O,

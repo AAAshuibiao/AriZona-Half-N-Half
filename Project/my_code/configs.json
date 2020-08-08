@@ -1,6 +1,6 @@
 {
     "Use-custom-trainer": false,
-    "Training-data-set-portion": "0-10000",
+    "Training-data-set-portion": "0-5000",
     "tolerance": 10,
     "step_w": 0.1,
     "step_b": 2.55

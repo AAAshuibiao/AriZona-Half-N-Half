@@ -18,15 +18,27 @@ def simple_predict():
     )
 
 
+def load_from_image_list():
+    ag = loader.autoGrader
+
+    c = 0
+
+    for y in range(1, 9):
+        for x in range(1, 9):
+            smap.map[(x, y)].color, smap.map[(x, y)].number = ag.image_list[c]
+            c += 1
+
+
 def run():
     setup()
     #predict()
 
-    simple_predict()
-
-    for i in range(64):
-        print(smap.simple_predictions[i], end = ", ")
-        if not (i+1) % 8: print()
-
-    smap.print_color()
+    #simple_predict()
     
+    #loader.autoGrader.random_image(3, 3)
+
+    load_from_image_list()
+
+    smap_debug = smap
+
+    smap._debug_print_map()

@@ -23,7 +23,7 @@ trainer = None
 
 print("processing: training", file = stdout)
 from . import train
-train.run()
+#train.run()
 
 
 print("processing: recognizing", file = stdout)

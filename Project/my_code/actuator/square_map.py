@@ -1,6 +1,7 @@
 from loader import pictures
 from actuator.square import Square
 
+import loader
 
 def edgeless(func):
     def inner(self):
@@ -18,8 +19,8 @@ def traverse(func):
             for x in range(*sizes[0]):
                 info = func(self, x, y)
                 if info != None:
-                    print(str(info), end = ", ")
-                    if x+1 == sizes[0][1]: print()
+                    print(str(info), end = ", ", file = loader.stdout)
+                    if x+1 == sizes[0][1]: print(file = loader.stdout)
         
         return self
     return inner
@@ -56,8 +57,8 @@ class Square_map(object):
 
     @traverse
     def init_edge(self, x = None, y = None):
-        if not x == 0 and not x+1 == self.size['X']: pass
-        elif not y == 0 and not y+1 == self.size['Y']: pass
+        if x in [0, self.size['X']-1]: pass
+        elif y in [0, self.size['Y']-1]: pass
         else: self.map[(x, y)].is_edge = False
 
     @edgeless
@@ -80,3 +81,13 @@ class Square_map(object):
     @traverse
     def _debug_print_edgeless_ids(self, x = None, y = None):
         return self.map[(x, y)].ID
+
+    @traverse
+    def _debug_print_map(self, x = None, y = None):
+        square = self.map[(x, y)]
+
+        if square.is_edge:
+            return "ED"
+        else:
+            return ['R', 'G', 'B'][square.color] + str(square.number)
+            #return "IN"

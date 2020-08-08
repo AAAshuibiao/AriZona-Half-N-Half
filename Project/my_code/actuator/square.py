@@ -7,6 +7,5 @@ class Square(object):
 
         self.image_data = None
         
-        self.simple_prediction = None
-
+        self.number = None
         self.color = None

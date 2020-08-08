@@ -6,11 +6,10 @@ import loader
 import processor
 import actuator
 
-from actuator.proceed import begin
-
 
 def main():
-    begin()
+    if actuator.ready:
+        actuator.begin()
     command('pause')
 
 
