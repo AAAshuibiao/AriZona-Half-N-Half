@@ -21,7 +21,7 @@ def traverse(func):
                 if info != None:
                     print(str(info), end = ", ", file = loader.stdout)
                     if x+1 == size[0][1]: print(file = loader.stdout)
-        
+
         return self
     return inner
 
@@ -86,10 +86,11 @@ class Square_map(object):
     def _debug_print_map(self, x = None, y = None):
         square = self.map[(x, y)]
 
-        if square.is_edge:
-            return "ED"
-        elif square.moves == None:
-            return ['R', 'G', 'B'][square.color] + str(square.number)
-            #return "IN"
-        else:
+        if square.moves != None:
             return '0' + str(square.moves)
+        elif square.is_edge:
+            return "ED"
+        elif square.number != None and square.color != None:
+            return ['R', 'G', 'B'][square.color] + str(square.number)
+        else:
+            return "IN"

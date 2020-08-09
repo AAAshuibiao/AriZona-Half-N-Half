@@ -21,6 +21,7 @@ class BFS():
         self.size = smap.size
         self.start = None
         self.debug_print = False
+        self.mcount = 0
 
     def start_from(self, start):
         self.map = smap.map.copy()
@@ -33,7 +34,10 @@ class BFS():
             except AssertionError:
                 smap.map[(x, y)].moves = None
         self.map[start].moves = 0
-        self.move()
+        for i in range(3):
+            self.mcount = 0
+            self.move()
+            if self.mcount == 0: break
         return self
 
     @traverse
@@ -44,12 +48,14 @@ class BFS():
                 while True:
                     poz = (poz[0] + direction[0], poz[1] + direction[1])
                     try:
-                        if self.map[poz].number != None and self.map[poz].color != None or self.map[poz].moves != None:
+                        if self.debug_print:
+                            smap._debug_print_map()
+                            print("\n\n\n\n\n", file = loader.stdout)
+                        if self.map[poz].number != None and self.map[poz].color != None or self.map[poz].moves != None and self.map[poz].moves != self.map[(x, y)].moves + 1:
                             raise SquareOccupied("OOF")
                         else:
-                            if self.debug_print:
-                                smap._debug_print_map()
                             self.map[poz].moves = self.map[(x, y)].moves + 1
+                            self.mcount += 1
                     except KeyError:
                         break
                     except SquareOccupied:

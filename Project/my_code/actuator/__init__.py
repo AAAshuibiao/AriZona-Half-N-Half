@@ -16,8 +16,8 @@ def begin():
         pfinder.find_pairs()
         a = pfinder.pairs
         b = 0
-        for pair in pfinder.pairs:
-            for i in range(1, 5):
+        for i in range(1, 5):
+            for pair in pfinder.pairs:
                 if pair.distance == i:
                     args = [pair.start[1]-1, pair.start[0]-1, pair.end[1]-1, pair.end[0]-1]
                     ag.link(*args)
