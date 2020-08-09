@@ -8,5 +8,5 @@ while True:
     lst = []
     for i in range(4):
         lst.append(int(input()))
-    ag.link(*lst)
+    print(ag.link(*lst))
 os.system('pause')

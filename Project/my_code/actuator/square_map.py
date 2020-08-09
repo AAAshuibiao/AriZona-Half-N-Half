@@ -11,16 +11,16 @@ def edgeless(func):
 def traverse(func):
     def inner(self, trim = False):
         if not trim:
-            sizes = [ [ 0, self.size['X'] ], [ 0, self.size['Y'] ] ]
+            size = [ [ 0, self.size['X'] ], [ 0, self.size['Y'] ] ]
         else:
-            sizes = [ [1, self.size['X']-1 ], [ 1, self.size['Y']-1 ] ]
+            size = [ [1, self.size['X']-1 ], [ 1, self.size['Y']-1 ] ]
         
-        for y in range(*sizes[1]):
-            for x in range(*sizes[0]):
+        for y in range(*size[1]):
+            for x in range(*size[0]):
                 info = func(self, x, y)
                 if info != None:
                     print(str(info), end = ", ", file = loader.stdout)
-                    if x+1 == sizes[0][1]: print(file = loader.stdout)
+                    if x+1 == size[0][1]: print(file = loader.stdout)
         
         return self
     return inner

@@ -1,2 +1,0 @@
-def begin():
-    pass
