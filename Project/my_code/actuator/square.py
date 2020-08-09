@@ -13,4 +13,6 @@ class Square(object):
 
         self.image_data = None
 
+        self.moves = None
+
         self.psargs = {"moves" : None}

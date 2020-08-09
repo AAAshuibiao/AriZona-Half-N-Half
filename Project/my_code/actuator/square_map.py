@@ -88,6 +88,8 @@ class Square_map(object):
 
         if square.is_edge:
             return "ED"
-        else:
+        elif square.moves == None:
             return ['R', 'G', 'B'][square.color] + str(square.number)
             #return "IN"
+        else:
+            return '0' + str(square.moves)
