@@ -62,7 +62,7 @@ class BFS():
                         if poz != self.start:
                             if self.map[poz].number == self.map[self.start].number and self.map[poz].color == self.map[self.start].color:
                                 if [poz, self.start] not in actuator.pfinder.update_pl() and [self.start, poz] not in actuator.pfinder.update_pl():
-                                        actuator.pfinder.pairs.append(Pair(self.start, poz, self.map[(x, y)].moves + 1))
+                                    actuator.pfinder.pairs.append(Pair(self.start, poz, self.map[(x, y)].moves + 1))
                         break
 
 

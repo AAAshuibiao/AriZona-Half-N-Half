@@ -20,6 +20,7 @@ def begin():
             for pair in pfinder.pairs:
                 if pair.distance == i:
                     args = [pair.start[1]-1, pair.start[0]-1, pair.end[1]-1, pair.end[0]-1]
+                    
                     ag.link(*args)
                     smap.map[pair.start].number = None
                     smap.map[pair.end].number = None

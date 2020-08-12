@@ -91,6 +91,14 @@ class Square_map(object):
         elif square.is_edge:
             return "ED"
         elif square.number != None and square.color != None:
-            return ['R', 'G', 'B'][square.color] + str(square.number)
+            try:
+                return ['R', 'G', 'B'][square.color] + str(square.number)
+            except TypeError:
+                return square.color + str(square.number)
         else:
             return "IN"
+
+    @edgeless
+    @traverse
+    def correct_and_load_simple_predictions(self, x = None, y = None):
+        self.map[(x, y)].number = self.simple_predictions.pop(0)
