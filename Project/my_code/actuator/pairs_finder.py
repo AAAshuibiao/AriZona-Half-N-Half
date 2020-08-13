@@ -42,7 +42,7 @@ class BFS():
 
     @traverse
     def move(self, x = None, y = None):
-        if self.map[(x, y)].moves != None and self.map[(x, y)].moves <= 4:
+        if self.map[(x, y)].moves != None and self.map[(x, y)].moves < 4:
             for direction in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
                 poz = (x, y)
                 while True:

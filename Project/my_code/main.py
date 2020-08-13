@@ -6,11 +6,14 @@ import loader
 import processor
 import actuator
 
+import time
+
 
 def main():
     if actuator.ready:
         actuator.begin()
-    command('pause')
+    time.sleep(2)
+    #command('pause')
 
 
 if __name__ == '__main__':

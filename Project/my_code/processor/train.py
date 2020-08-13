@@ -6,6 +6,22 @@ import processor
 from processor import config as cfg
 from processor import Trainer
 
+import time
+import threading
+tKill = False
+
+
+def print_loading_bar():
+    global tKill
+    print("training: starting")
+    print("training: 0%")
+    for i in range(1, 10):
+        if tKill: break
+        print("training: " + str(i) +"0%")
+        time.sleep(10)
+    print("training: 99%")
+    return 0
+
 
 def data_reshape(data):
     return np.reshape(data, (len(data), 784))
@@ -38,5 +54,9 @@ def learn():
 
 
 def run():
+    global tKill
+    t = threading.Thread(target=print_loading_bar)
+    t.start()
     setup()
     learn()
+    tKill = True

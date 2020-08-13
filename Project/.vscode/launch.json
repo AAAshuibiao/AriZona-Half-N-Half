@@ -6,11 +6,20 @@
     "configurations": [
 
 
+
         {
             "name": "Launch program(from main.py)",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}\\my_code\\main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}\\my_code"
+        },
+        {
+            "name": "Loop program(from loop.py)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\my_code\\loop.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}\\my_code"
         },

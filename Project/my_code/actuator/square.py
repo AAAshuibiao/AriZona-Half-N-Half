@@ -15,4 +15,4 @@ class Square(object):
 
         self.moves = None
 
-        self.psargs = {"moves" : None}
+        self.psargs = {"moves" : None, "is_known" : False}
